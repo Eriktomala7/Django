@@ -18,24 +18,10 @@
       "dest": "/aplicaciones/pagina_web/static/$1"
     },
     {
-      "src": "/admin/?(.*)",
-      "dest": "/DjangoProjectFinal/wsgi.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "/DjangoProjectFinal/wsgi.py"
     }
   ],
-  "build": {
-    "env": {
-      "PYTHONPATH": "/var/task/DjangoProjectFinal:/var/task/aplicaciones:/var/task"
-    }
-  },
-  "env": {
-    "PYTHONPATH": "/var/task/DjangoProjectFinal:/var/task/aplicaciones:/var/task"
-  },
   "buildCommand": "bash vercel_build.sh",
-  "installCommand": "pip install -r requirements.txt",
-  "outputDirectory": "staticfiles",
-  "regions": ["iad1"]
+  "installCommand": "pip install -r requirements.txt"
 }
