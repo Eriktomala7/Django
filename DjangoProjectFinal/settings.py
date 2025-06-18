@@ -168,11 +168,13 @@ if not DEBUG:
     # Configuración de CORS
     CORS_ALLOWED_ORIGINS = [
         'https://*.vercel.app',
-        'https://*.now.sh'
+        'https://*.now.sh',
+        'https://django-five-lyart.vercel.app'
     ]
     CSRF_TRUSTED_ORIGINS = [
         'https://*.vercel.app',
-        'https://*.now.sh'
+        'https://*.now.sh',
+        'https://django-five-lyart.vercel.app'
     ]
     
     # Configuración de seguridad adicional
@@ -182,6 +184,19 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 año
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    
+    # Configuración de base de datos para Vercel
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    
+    # Si hay una URL de base de datos configurada, úsala
+    if 'DATABASE_URL' in os.environ:
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Configuración de base de datos para Vercel
 DATABASE_URL = os.environ.get('DATABASE_URL')

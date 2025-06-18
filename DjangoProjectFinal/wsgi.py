@@ -11,24 +11,34 @@ import os
 import sys
 from pathlib import Path
 
-# Asegúrate de que el directorio del proyecto esté en el path
+# Configura el path para incluir el directorio del proyecto
 project_root = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(project_root))
-
-# Asegúrate de que el directorio de aplicaciones esté en el path
 apps_path = os.path.join(project_root, 'aplicaciones')
-if apps_path not in sys.path:
-    sys.path.append(apps_path)
+
+# Añade los paths necesarios
+paths = [
+    str(project_root),
+    apps_path,
+    os.path.join(project_root, 'DjangoProjectFinal')
+]
+
+for path in paths:
+    if path not in sys.path:
+        sys.path.insert(0, path)
 
 # Configura las variables de entorno
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoProjectFinal.settings')
 
-# Inicializa la aplicación Django
+# Importa y configura la aplicación WSGI
 from django.core.wsgi import get_wsgi_application
 
-# Asegúrate de que las aplicaciones estén cargadas
-import django
-django.setup(set_prefix=False)
+# Asegúrate de que Django esté configurado correctamente
+try:
+    import django
+    django.setup()
+except Exception as e:
+    print(f"Error al configurar Django: {e}")
+    raise
 
 # Crea la aplicación WSGI
 application = get_wsgi_application()
