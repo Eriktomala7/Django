@@ -1,19 +1,17 @@
-# Versiones compatibles con Python 3.12
-Django==5.0.6
-python-dotenv==1.0.0
-whitenoise==6.5.0
-gunicorn==21.2.0
-psycopg2-binary==2.9.9
-Pillow==10.2.0
+# Versiones básicas y estables
+Django>=4.2.0,<5.0.0
+python-dotenv>=1.0.0
+whitenoise>=6.5.0
+gunicorn>=21.2.0
+psycopg2-binary>=2.9.9
+Pillow>=10.0.0
+dj-database-url>=2.1.0
+python-multipart>=0.0.9
 
-# Utilidades para producción
-dj-database-url==2.1.0
-python-multipart==0.0.9
+# Dependencias esenciales
+asgiref>=3.7.2
+sqlparse>=0.4.4
+typing-extensions>=4.7.1
+tzdata>=2023.3
 
-# Dependencias adicionales
-asgiref==3.8.1
-sqlparse==0.5.0
-typing-extensions==4.12.2
-tzdata==2024.1
-
-# Nota: Las versiones están configuradas para ser compatibles con Python 3.12
+# Nota: Usar >= para permitir versiones compatibles

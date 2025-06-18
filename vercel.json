@@ -7,7 +7,7 @@
       "config": {
         "maxLambdaSize": "50mb",
         "python": {
-          "runtime": "python3.12"
+          "runtime": "python3.10"
         }
       }
     }
@@ -22,12 +22,14 @@
       "dest": "/DjangoProjectFinal/wsgi.py"
     }
   ],
-  "buildCommand": "rm -rf node_modules && bash vercel_build.sh",
+  "buildCommand": "pip install --upgrade pip && pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py collectstatic --noinput",
   "installCommand": "pip install --no-cache-dir -r requirements.txt",
   "regions": ["iad1"],
   "public": true,
   "env": {
     "PYTHONUNBUFFERED": "1",
-    "PYTHONPATH": "/var/task/DjangoProjectFinal:/var/task/aplicaciones"
+    "PYTHONPATH": "/var/task/DjangoProjectFinal:/var/task/aplicaciones",
+    "DJANGO_SETTINGS_MODULE": "DjangoProjectFinal.settings",
+    "DISABLE_COLLECTSTATIC": "1"
   }
 }
