@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<section class="container text-center py-5" style="background-color: white;">
+  <h1 style="color: #006400; font-weight: bold;">¡Bienvenido a ENERGY-FIT!</h1>
+  <p style="color: #333; font-size: 18px;">
+    Tu tienda online de suplementos para mayor rendimiento físico y bienestar.
+  </p>
+
+  <!-- Carrusel de fotos -->
+  <div id="carouselSuplementos" class="carousel slide my-4" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselSuplementos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselSuplementos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselSuplementos" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner rounded shadow">
+      <div class="carousel-item active">
+        <img src="{% static 'img/imagen_1.jpg' %}" class="d-block w-100" alt="Suplemento 1" style="max-height:350px; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/imagen_2.jpg' %}" class="d-block w-100" alt="Suplemento 2" style="max-height:350px; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/imagen_3.jpg' %}" class="d-block w-100" alt="Suplemento 3" style="max-height:350px; object-fit:cover;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSuplementos" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselSuplementos" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <div class="section-btns">
+    <a href="{% url 'tienda' %}" class="btn btn-dark btn-lg">Visita la Tienda</a>
+    <a href="{% url 'promociones' %}" class="btn btn-success btn-lg">Ver Promociones</a>
+  </div>
+</section>
+
+{% endblock %}
+
+</html>

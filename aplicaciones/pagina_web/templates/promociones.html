@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Promociones | ENERGY-FIT{% endblock %}
+{% block content %}
+<section class="py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold mb-3" style="color: #006400;">¡Ofertas Especiales!</h1>
+      <p class="lead text-muted">Aprovecha estas promociones por tiempo limitado</p>
+      
+      <!-- Contador de oferta -->
+      <div class="d-flex justify-content-center mb-4">
+        <div class="bg-white p-3 rounded-3 shadow-sm d-inline-flex">
+          <div class="text-center px-3">
+            <div id="days" class="fs-2 fw-bold text-success">03</div>
+            <div class="text-muted small">Días</div>
+          </div>
+          <div class="text-center px-3">
+            <div id="hours" class="fs-2 fw-bold text-success">12</div>
+            <div class="text-muted small">Horas</div>
+          </div>
+          <div class="text-center px-3">
+            <div id="minutes" class="fs-2 fw-bold text-success">45</div>
+            <div class="text-muted small">Minutos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Promo 1 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Proteína Whey" style="height: 200px; object-fit: cover;">
+            <div class="position-absolute top-0 end-0 bg-danger text-white px-3 py-1 m-2 rounded-pill">-20%</div>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0 fw-bold">Proteína Whey 2kg</h5>
+              <div class="text-success fw-bold">$39.99</div>
+            </div>
+            <p class="card-text text-muted">Ideal para recuperación y aumento muscular. Sabor chocolate, vainilla o fresa.</p>
+            <div class="d-grid gap-2">
+              <a href="#" class="btn btn-success fw-bold">Aprovechar Oferta</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo 2 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Creatina" style="height: 200px; object-fit: cover;">
+            <div class="position-absolute top-0 end-0 bg-primary text-white px-3 py-1 m-2 rounded-pill">2x1</div>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0 fw-bold">Creatina Monohidratada</h5>
+              <div class="text-success fw-bold">$29.99</div>
+            </div>
+            <p class="card-text text-muted">Aumenta tu fuerza y resistencia. ¡Llévate 2 por el precio de 1! Stock limitado.</p>
+            <div class="d-grid gap-2">
+              <a href="#" class="btn btn-success fw-bold">Comprar Ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo 3 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Pre-entreno" style="height: 200px; object-fit: cover;">
+            <div class="position-absolute top-0 end-0 bg-warning text-dark px-3 py-1 m-2 rounded-pill">-15%</div>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0 fw-bold">Pre-Entreno Energy</h5>
+              <div class="text-success fw-bold">$24.99</div>
+            </div>
+            <p class="card-text text-muted">Energía y enfoque para entrenamientos intensos. Varios sabores disponibles.</p>
+            <div class="d-grid gap-2">
+              <a href="#" class="btn btn-success fw-bold">Ver Detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <div class="alert alert-info d-inline-flex align-items-center" role="alert">
+        <i class="fas fa-exclamation-circle me-2"></i>
+        <div>¡Las ofertas terminan pronto! No pierdas la oportunidad de ahorrar en tus suplementos favoritos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script para el contador -->
+<script>
+  // Fecha objetivo: 3 días a partir de ahora
+  const countDownDate = new Date();
+  countDownDate.setDate(countDownDate.getDate() + 3);
+  countDownDate.setHours(23, 59, 59, 0);
+
+  // Actualizar el contador cada segundo
+  const x = setInterval(function() {
+    // Obtener fecha y hora actual
+    const now = new Date().getTime();
+    
+    // Calcular la diferencia
+    const distance = countDownDate - now;
+    
+    // Cálculos de tiempo
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    
+    // Mostrar el resultado
+    document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+    document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+    
+    // Si el contador termina
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("days").innerHTML = "00";
+      document.getElementById("hours").innerHTML = "00";
+      document.getElementById("minutes").innerHTML = "00";
+    }
+  }, 1000);
+</script>
+
+<style>
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px !important;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+  }
+  .btn-success {
+    background-color: #198754;
+    border-color: #198754;
+  }
+  .btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
+  }
+</style>
+{% endblock %}

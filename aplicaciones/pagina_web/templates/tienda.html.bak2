@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% block title %} Tienda | Energy-Fit {% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <!-- Menú de navegación por categorías -->
+  <div class="d-flex justify-content-center mb-4">
+    <div class="btn-group" role="group">
+      <a href="#proteinas" class="btn btn-outline-primary">Proteínas</a>
+      <a href="#preentrenos" class="btn btn-outline-primary">Pre-entrenos</a>
+      <a href="#vitaminas" class="btn btn-outline-primary">Vitaminas</a>
+    </div>
+  </div>
+
+  <!-- Sección de Proteínas -->
+  <section id="proteinas" class="mb-5 pt-4">
+    <h2 class="mb-4 fw-bold" style="color: var(--primary);">
+      <i class="fas fa-dumbbell me-2"></i>Proteínas
+    </h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      {% for producto in proteinas %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="position-relative">
+            <img src="{% static producto.imagen %}" class="card-img-top" alt="{{ producto.nombre }}">
+            {% if forloop.first %}
+            <span class="position-absolute top-0 end-0 m-2 badge bg-danger">Nuevo</span>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.descripcion }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="rating">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="far fa-star text-warning"></i>
+                <span class="ms-1 small text-muted">(24)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+            <span class="fw-bold" style="color:var(--primary); font-size:1.2rem;">${{ producto.precio|floatformat:2 }}</span>
+            <form action="{% url 'agregar_al_carrito' producto.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary btn-sm">Añadir al carrito</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Sección de Pre-entrenos -->
+  <section id="preentrenos" class="mb-5 pt-4">
+    <h2 class="mb-4 fw-bold" style="color: var(--primary);">
+      <i class="fas fa-bolt me-2"></i>Pre-entrenos
+    </h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      {% for producto in preentrenos %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="position-relative">
+            <img src="{% static producto.imagen %}" class="card-img-top" alt="{{ producto.nombre }}">
+            {% if forloop.first %}
+            <span class="position-absolute top-0 end-0 m-2 badge bg-danger">Más vendido</span>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.descripcion }}</p>
+            <div class="rating">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="ms-1 small text-muted">({{ forloop.counter|add:20 }})</span>
+            </div>
+          </div>
+          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+            <span class="fw-bold" style="color:var(--primary); font-size:1.2rem;">${{ producto.precio|floatformat:2 }}</span>
+            <form action="{% url 'agregar_al_carrito' producto.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary btn-sm">Añadir al carrito</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Sección de Vitaminas -->
+  <section id="vitaminas" class="mb-5 pt-4">
+    <h2 class="mb-4 fw-bold" style="color: var(--primary);">
+      <i class="fas fa-pills me-2"></i>Vitaminas y Salud
+    </h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      {% for producto in vitaminas %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="position-relative">
+            <img src="{% static producto.imagen %}" class="card-img-top" alt="{{ producto.nombre }}">
+            {% if forloop.first %}
+            <span class="position-absolute top-0 end-0 m-2 badge bg-primary">Esencial</span>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.descripcion }}</p>
+            <div class="rating">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="ms-1 small text-muted">({{ forloop.counter|add:50 }})</span>
+            </div>
+          </div>
+          <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+            <span class="fw-bold" style="color:var(--primary); font-size:1.2rem;">${{ producto.precio|floatformat:2 }}</span>
+            <form action="{% url 'agregar_al_carrito' producto.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary btn-sm">Añadir al carrito</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Desplazamiento suave para los enlaces internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Ajuste para el navbar fijo
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // Resaltar la sección actual en el menú
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.btn-group a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - 100)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Manejar el botón de añadir al carrito
+  document.querySelectorAll('.agregar-carrito').forEach(boton => {
+    boton.addEventListener('click', function() {
+      const producto = {
+        id: this.dataset.productoId,
+        nombre: this.dataset.productoNombre,
+        precio: parseFloat(this.dataset.productoPrecio),
+        imagen: this.dataset.productoImagen,
+        categoria: this.dataset.productoCategoria,
+        cantidad: 1
+      };
+      
+      // Obtener el carrito actual o crear uno nuevo
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      
+      // Verificar si el producto ya está en el carrito
+      const productoExistente = carrito.find(item => item.id === producto.id);
+      
+      if (productoExistente) {
+        // Si el producto ya está en el carrito, incrementar la cantidad
+        productoExistente.cantidad += 1;
+      } else {
+        // Si no está en el carrito, agregarlo
+        carrito.push(producto);
+      }
+      
+      // Guardar el carrito actualizado
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      
+      // Mostrar notificación
+      mostrarNotificacion(`${producto.nombre} añadido al carrito`);
+      
+      // Actualizar el contador del carrito
+      actualizarContadorCarrito();
+    });
+  });
+  
+  // Función para mostrar notificaciones
+  function mostrarNotificacion(mensaje) {
+    const notificacion = document.createElement('div');
+    notificacion.className = 'position-fixed bottom-0 end-0 m-3 p-3 bg-success text-white rounded shadow';
+    notificacion.style.zIndex = '1100';
+    notificacion.style.transition = 'opacity 0.5s';
+    notificacion.textContent = mensaje;
+    
+    document.body.appendChild(notificacion);
+    
+    // Hacer que la notificación desaparezca después de 3 segundos
+    setTimeout(() => {
+      notificacion.style.opacity = '0';
+      setTimeout(() => notificacion.remove(), 500);
+    }, 3000);
+  }
+  
+  // Función para actualizar el contador del carrito
+  function actualizarContadorCarrito() {
+    const contador = document.getElementById('contador-carrito');
+    if (contador) {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+      contador.textContent = totalItems;
+      contador.style.display = totalItems > 0 ? 'inline-block' : 'none';
+    }
+  }
+  
+  // Inicializar el contador del carrito
+  actualizarContadorCarrito();
+});
+</script>
+{% endblock %}
+
+<style>
+.btn-outline-primary.active {
+  background-color: #0d6efd;
+  color: white !important;
+}
+
+section {
+  scroll-margin-top: 80px; /* Ajuste para el navbar fijo */
+}
+</style>
+
+{% endblock %}

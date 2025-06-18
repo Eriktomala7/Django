@@ -1,0 +1,165 @@
+# Entornos virtuales
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+.idea/*
+.idea/.*
+
+# Archivos de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de base de datos
+*.sqlite3
+*.sql
+
+# Archivos de Python
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints
+
+# Archivos de cobertura
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Archivos de producción
+*.sqlite3
+
+# Archivos de desarrollo local
+*.local
+
+# Archivos de configuración local
+settings/local.py
+settings/*.local.py
+
+# Archivos de entorno virtual
+venv/
+ENV/
+
+# Archivos de Python
+*.py[cod]
+*$py.class
+
+# Archivos de distribución / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de PyInstaller
+*.manifest
+*.spec
+
+# Archivos de Instalador de Python
+*.mo
+*.pot
+
+# Archivos de Django
+*.log
+local_settings.py
+db.sqlite3
+
+# Archivos de Flask
+instance/
+.webassets-cache
+
+# Archivos de entorno virtual
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de C
+*.so
+
+# Archivos de PyCharm
+.idea/
+
+# Archivos de VS Code
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

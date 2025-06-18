@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Rebajas | ENERGY-FIT{% endblock %}
+{% block content %}
+<section class="container py-5 text-center" style="min-height:60vh;">
+  <h1 class="mb-3" style="color: var(--accent); font-family: var(--heading); font-size:2.2rem;">¡Rebajas Exclusivas!</h1>
+  <p class="mb-5" style="color: var(--text-light); max-width: 600px; margin:auto;">Descubre productos seleccionados con grandes descuentos. ¡Aprovecha antes de que se acaben!</p>
+  <div class="row justify-content-center gy-4">
+    <!-- Rebaja 1 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100" style="border-radius: 14px;">
+        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="BCAA">
+        <div class="card-body">
+          <h5 class="card-title" style="color: var(--primary);">BCAA Recovery</h5>
+          <p class="card-text">¡30% menos! Aminoácidos esenciales para recuperación rápida. Sabor frambuesa.</p>
+          <a href="#" class="btn btn-dark">Ver más</a>
+        </div>
+      </div>
+    </div>
+    <!-- Rebaja 2 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100" style="border-radius: 14px;">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Omega 3">
+        <div class="card-body">
+          <h5 class="card-title" style="color: var(--primary);">Omega 3 Premium</h5>
+          <p class="card-text">¡Super rebaja! 25% OFF en salud cardiovascular y mental.</p>
+          <a href="#" class="btn btn-dark">Comprar ahora</a>
+        </div>
+      </div>
+    </div>
+    <!-- Rebaja 3 -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100" style="border-radius: 14px;">
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Multivitamínico">
+        <div class="card-body">
+          <h5 class="card-title" style="color: var(--primary);">Multivitamínico Plus</h5>
+          <p class="card-text">¡Precio especial! Refuerza tu sistema inmune y energía diaria.</p>
+          <a href="#" class="btn btn-dark">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

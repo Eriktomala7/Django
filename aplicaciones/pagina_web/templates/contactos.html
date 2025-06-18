@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} Contacto | Energy-Fit {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<section class="section">
+  <div class="row justify-content-center align-items-center">
+    <!-- Información del contacto -->
+    <div class="col-12 col-md-5 mb-4 mb-md-0 text-md-end text-center">
+      <h2 class="fw-bold mb-3" style="color: var(--primary);">Contáctanos</h2>
+      <p class="mb-2"><i class="fas fa-user text-success me-2"></i> Erika Soraya Borbor Albán</p>
+      <p class="mb-2"><i class="fas fa-phone-alt text-success me-2"></i> <a href="tel:0995246412" class="text-dark fw-bold">0995246412</a></p>
+      <p class="mb-2"><i class="fas fa-envelope text-success me-2"></i> <a href="mailto:erikaborbor1996@gmail.com" class="text-dark fw-bold">erikaborbor1996@gmail.com</a></p>
+      <p class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Santa Elena, Ecuador</p>
+      <img src="{% static 'img/2.png' %}" alt="Energy-Fit contacto" class="img-fluid rounded shadow mt-3 mb-2" style="max-width:260px;">
+    </div>
+    <!-- Formulario de contacto -->
+    <div class="col-12 col-md-5 offset-md-1">
+      <div class="card shadow border-0 p-4">
+        <h3 class="fw-bold mb-3" style="color: var(--primary);">Envíanos un mensaje</h3>
+        <form>
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Tu nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="email@dominio.com">
+          </div>
+          <div class="mb-3">
+            <label for="inputMessage" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="inputMessage" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección multimedia mejorada -->
+<section class="section py-5">
+  <div class="container">
+    <h3 class="fw-bold text-center mb-4" style="color: var(--primary);">Multimedia Energy-Fit</h3>
+    <div class="row g-4 align-items-center justify-content-center">
+      <div class="col-12 col-md-6 text-center">
+        <div class="card shadow border-0 p-3">
+          <h5 class="mb-3">Video Promocional</h5>
+          <video class="w-100 rounded" style="max-height:340px;" controls>
+            <source src="{% static 'videos/gif_1.mp4' %}" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 text-center">
+        <div class="card shadow border-0 p-3">
+          <h5 class="mb-3">YouTube: Energy-Fit</h5>
+          <div class="ratio ratio-16x9 rounded overflow-hidden">
+            <iframe src="https://www.youtube.com/embed/4ciHLUnF2oU" title="Video promocional Energy-Fit" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

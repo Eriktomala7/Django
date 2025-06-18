@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="section text-center">
+  <h2 class="mb-4 fw-bold" style="color: var(--primary);">Categorías principales</h2>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{% static 'img/1.png' %}" class="card-img-top" alt="Proteínas">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Proteínas</h5>
+          <p class="card-text">Suplementos ideales para el desarrollo y recuperación muscular.</p>
+          <a href="/tienda/#proteinas" class="btn btn-primary">Ver productos</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{% static 'img/2.png' %}" class="card-img-top" alt="Pre-entrenos">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Pre-entrenos</h5>
+          <p class="card-text">Energía y enfoque para tus entrenamientos más exigentes.</p>
+          <a href="/tienda/#preentrenos" class="btn btn-primary">Ver productos</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{% static 'img/3.png' %}" class="card-img-top" alt="Vitaminas y Salud">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Vitaminas y Salud</h5>
+          <p class="card-text">Apoya tu bienestar y sistema inmunológico.</p>
+          <a href="/tienda/#vitaminas" class="btn btn-primary">Ver productos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

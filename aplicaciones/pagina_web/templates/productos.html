@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %} Productos | Energy-Fit {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<section class="container py-5">
+  <h2 class="text-center mb-4" style="color:#006400; font-weight:bold;">Nuestros Productos</h2>
+  <div class="row justify-content-center">
+    <!-- Producto 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/1.png' %}" class="card-img-top" alt="Energizante PowerUp">
+        <div class="card-body">
+          <h5 class="card-title">Energizante PowerUp</h5>
+          <p class="card-text">Aumenta tu energía y resistencia con nuestro energizante natural de alto rendimiento.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/2.png' %}" class="card-img-top" alt="Proteína MaxMuscle">
+        <div class="card-body">
+          <h5 class="card-title">Proteína MaxMuscle</h5>
+          <p class="card-text">Suplemento de proteína y aminoácidos esenciales para mejorar tu desarrollo muscular.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/3.png' %}" class="card-img-top" alt="Quemador FitBurn">
+        <div class="card-body">
+          <h5 class="card-title">Quemador FitBurn</h5>
+          <p class="card-text">Quema grasa y controla tu apetito con fórmulas avanzadas y seguras.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 4 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/imagen_1.jpg' %}" class="card-img-top" alt="Creatina Pro">
+        <div class="card-body">
+          <h5 class="card-title">Creatina Pro</h5>
+          <p class="card-text">Potencia tu fuerza, rendimiento y recuperación con creatina monohidratada de alta calidad.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 5 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/imagen_2.jpg' %}" class="card-img-top" alt="Vitaminas VitalPlus">
+        <div class="card-body">
+          <h5 class="card-title">Vitaminas VitalPlus</h5>
+          <p class="card-text">Vitaminas, minerales y complementos adicionales para un estilo de vida saludable.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 6 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{% static 'img/imagen_3.jpg' %}" class="card-img-top" alt="Suplemento MultiFit">
+        <div class="card-body">
+          <h5 class="card-title">Suplemento MultiFit</h5>
+          <p class="card-text">Suplemento integral para mejorar tu bienestar general y rendimiento diario.</p>
+          <button class="btn btn-dark">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

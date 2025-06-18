@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Nosotros | ENERGY-FIT{% endblock %}
+{% block content %}
+<section class="container py-5" style="min-height:60vh;">
+  <div class="row align-items-center justify-content-center mb-5">
+    <div class="col-12 col-md-5 text-center mb-4 mb-md-0">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Equipo ENERGY-FIT" class="img-fluid rounded shadow" style="max-width:320px;">
+    </div>
+    <div class="col-12 col-md-7">
+      <h1 style="color: var(--accent); font-family: var(--heading); font-size:2.2rem;">Sobre Nosotros</h1>
+      <p style="color: var(--text-light); font-size:1.1rem;">Somos ENERGY-FIT, una tienda online apasionada por el bienestar y el deporte. Nuestro objetivo es ayudarte a alcanzar tu máximo rendimiento físico y mental con productos de calidad, atención personalizada y asesoría profesional.</p>
+      <ul style="list-style:none; padding-left:0;">
+        <li><strong style="color:var(--primary);">🏆 Misión:</strong> Brindar los mejores suplementos y orientación a cada cliente para que logre sus metas.</li>
+        <li><strong style="color:var(--primary);">🌱 Visión:</strong> Ser líderes en bienestar integral y nutrición deportiva en Latinoamérica.</li>
+        <li><strong style="color:var(--primary);">💚 Valores:</strong> Compromiso, honestidad, pasión y cercanía con nuestra comunidad.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center mt-5">
+    <h3 style="color:var(--primary-dark); font-family:var(--heading);">¡Gracias por confiar en ENERGY-FIT!</h3>
+    <p style="color: var(--text-light);">Estamos para acompañarte en cada paso de tu camino saludable.</p>
+  </div>
+</section>
+{% endblock %}

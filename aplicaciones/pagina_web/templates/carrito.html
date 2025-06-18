@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">Tu Carrito de Compras</h1>
+    
+    <div id="carrito-vacio" class="text-center py-5" style="display: none;">
+        <i class="fas fa-shopping-cart fa-4x text-muted mb-3"></i>
+        <h3>Tu carrito está vacío</h3>
+        <p class="text-muted">¡Añade algunos productos antes de proceder al pago!</p>
+        <a href="{% url 'tienda' %}" class="btn btn-primary mt-3">
+            <i class="fas fa-store me-2"></i>Ir a la Tienda
+        </a>
+    </div>
+    
+    <div id="carrito-contenido" style="display: none;">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="carrito-items">
+                    <!-- Los productos se cargarán aquí con JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end fw-bold">Total:</td>
+                        <td colspan="2" class="fw-bold fs-5" id="total-carrito">
+                            $0.00
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'tienda' %}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Seguir Comprando
+            </a>
+            <a href="#" class="btn btn-primary" id="proceder-pago">
+                Proceder al Pago <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el carrito del localStorage o crear uno vacío
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    // Función para guardar el carrito en el localStorage
+    function guardarCarrito() {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarVistaCarrito();
+        actualizarContadorCarrito();
+    }
+    
+    // Función para actualizar la vista del carrito
+    function actualizarVistaCarrito() {
+        const carritoItems = document.getElementById('carrito-items');
+        const totalElement = document.getElementById('total-carrito');
+        const carritoVacio = document.getElementById('carrito-vacio');
+        const carritoContenido = document.getElementById('carrito-contenido');
+        
+        // Limpiar la tabla
+        carritoItems.innerHTML = '';
+        
+        if (carrito.length === 0) {
+            carritoVacio.style.display = 'block';
+            carritoContenido.style.display = 'none';
+            return;
+        }
+        
+        carritoVacio.style.display = 'none';
+        carritoContenido.style.display = 'block';
+        
+        let total = 0;
+        
+        // Agregar cada producto al carrito
+        carrito.forEach((item, index) => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="img-thumbnail me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-0">${item.nombre}</h5>
+                            <small class="text-muted">${item.categoria}</small>
+                        </div>
+                    </div>
+                </td>
+                <td>$${item.precio.toFixed(2)}</td>
+                <td>
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="actualizarCantidad(${index}, -1)">-</button>
+                        <span class="form-control text-center">${item.cantidad}</span>
+                        <button class="btn btn-outline-primary btn-sm" onclick="actualizarCantidad(${index}, 1)">+</button>
+                    </div>
+                </td>
+                <td>$${subtotal.toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="eliminarDelCarrito(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            carritoItems.appendChild(fila);
+        });
+        
+        // Actualizar el total
+        totalElement.textContent = `$${total.toFixed(2)}`;
+    }
+    
+    // Función para actualizar el contador del carrito en el navbar
+    function actualizarContadorCarrito() {
+        const contador = document.getElementById('contador-carrito');
+        if (contador) {
+            const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+            contador.textContent = totalItems;
+            contador.style.display = totalItems > 0 ? 'inline-block' : 'none';
+        }
+    }
+    
+    // Funciones globales para los botones
+    window.actualizarCantidad = function(index, cambio) {
+        carrito[index].cantidad += cambio;
+        
+        // Si la cantidad es 0 o menos, eliminar el producto
+        if (carrito[index].cantidad <= 0) {
+            carrito.splice(index, 1);
+        }
+        
+        guardarCarrito();
+    };
+    
+    window.eliminarDelCarrito = function(index) {
+        if (confirm('¿Estás seguro de eliminar este producto del carrito?')) {
+            carrito.splice(index, 1);
+            guardarCarrito();
+        }
+    };
+    
+    // Inicializar la vista del carrito
+    actualizarVistaCarrito();
+    actualizarContadorCarrito();
+    
+    // Manejar el botón de proceder al pago
+    if (btnPago) {
+        btnPago.addEventListener('click', function(e) {
+            if (carrito.length === 0) {
+                e.preventDefault();
+                alert('Tu carrito está vacío. Agrega productos antes de proceder al pago.');
+            }
+            // Aquí podrías redirigir a una página de pago real
+        });
+    }
+});
+</script>
+{% endblock %}
