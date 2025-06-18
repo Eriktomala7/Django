@@ -13,4 +13,8 @@ sqlparse==0.4.4
 typing-extensions==4.7.1
 tzdata==2023.3
 
+# Dependencias adicionales
+django-cors-headers==4.3.1
+python-multipart==0.0.9
+
 # Nota: Usar versiones específicas para mayor estabilidad
