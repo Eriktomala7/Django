@@ -1,0 +1,25 @@
+# Ignorar archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar entornos virtuales
+venv/
+env/
+ENV/
+
+# Ignorar archivos de entorno
+.env
+.env.local
+
+# Ignorar archivos de base de datos local
+*.sqlite3
+*.sql
+*.db
+
+# Ignorar archivos estáticos recolectados
+staticfiles/
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db

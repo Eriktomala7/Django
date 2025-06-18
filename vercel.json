@@ -22,6 +22,8 @@
       "dest": "/DjangoProjectFinal/wsgi.py"
     }
   ],
-  "buildCommand": "bash vercel_build.sh",
-  "installCommand": "pip install -r requirements.txt"
+  "buildCommand": "rm -rf node_modules && bash vercel_build.sh",
+  "installCommand": "pip install --no-cache-dir -r requirements.txt",
+  "regions": ["iad1"],
+  "public": true
 }
