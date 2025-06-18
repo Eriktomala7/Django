@@ -1,7 +1,7 @@
-# Versiones principales
+# Versiones compatibles con Python 3.12
 Django==5.0.6
 python-dotenv==1.0.0
-whitenoise==6.6.0
+whitenoise==6.5.0
 gunicorn==21.2.0
 psycopg2-binary==2.9.9
 Pillow==10.2.0
@@ -10,8 +10,10 @@ Pillow==10.2.0
 dj-database-url==2.1.0
 python-multipart==0.0.9
 
-# Eliminada dependencia de vercel ya que no es necesaria
-# y está causando problemas de compatibilidad
+# Dependencias adicionales
+asgiref==3.8.1
+sqlparse==0.5.0
+typing-extensions==4.12.2
+tzdata==2024.1
 
-# Otras dependencias
-# Agrega aquí otras dependencias que estés utilizando en tu proyecto
+# Nota: Las versiones están configuradas para ser compatibles con Python 3.12
