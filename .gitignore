@@ -55,6 +55,8 @@ staticfiles/
 .env.development.local
 .env.test.local
 .env.production.local
+*.env
+!.env.example
 
 # Archivos de sistema
 .DS_Store
