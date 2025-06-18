@@ -2,8 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "vercel.json",
-      "use": "@vercel/python"
+      "src": "DjangoProjectFinal/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "python": {
+          "runtime": "python3.10"
+        }
+      }
     },
     {
       "src": "aplicaciones/pagina_web/static/**",
@@ -17,7 +23,10 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.py"
+      "dest": "/DjangoProjectFinal/wsgi.py"
     }
-  ]
+  ],
+  "buildCommand": "bash vercel_build.sh",
+  "installCommand": "pip install -r requirements.txt",
+  "outputDirectory": "staticfiles"
 }

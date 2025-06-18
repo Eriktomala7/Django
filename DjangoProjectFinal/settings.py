@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--pkpqv5@q%#$iw%+qh25q2(z-(vt4-ju_!cv4*4&7(91=l6ala'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['*']  # Permitir todos los hosts para Vercel
+# Configuración de hosts permitidos
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    'localhost',
+    '127.0.0.1',
+    '.now.sh'
+]
 
 
 # Application definition
@@ -140,6 +146,7 @@ STATICFILES_DIRS = [
 
 # Configuración para servir archivos estáticos con WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'root')
 
 # Configuración de archivos de medios
 MEDIA_URL = '/media/'
@@ -152,6 +159,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuración de seguridad para producción
 if not DEBUG:
+    # Seguridad HTTPS
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -159,11 +167,21 @@ if not DEBUG:
     
     # Configuración de CORS
     CORS_ALLOWED_ORIGINS = [
-        'https://your-vercel-app-url.vercel.app',
+        'https://*.vercel.app',
+        'https://*.now.sh'
     ]
     CSRF_TRUSTED_ORIGINS = [
-        'https://your-vercel-app-url.vercel.app',
+        'https://*.vercel.app',
+        'https://*.now.sh'
     ]
+    
+    # Configuración de seguridad adicional
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 31536000  # 1 año
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # Configuración de base de datos para Vercel
 DATABASE_URL = os.environ.get('DATABASE_URL')
